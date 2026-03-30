@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+<style>
+
+body {
+text-align:center;
+font-family:'Comic Sans MS', cursive;
+margin:0;
+overflow:hidden;
+}
+
+/* BIG BUTTONS */
+button {
+padding:20px 40px;
+font-size:22px;
+margin:15px;
+border:none;
+border-radius:50px;
+cursor:pointer;
+background: linear-gradient(45deg, #ff4d6d, #ff8fab);
+color:white;
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
+transition: all 0.2s ease;
+}
+
+button:hover {
+transform: scale(1.1);
+}
+
+.fall {
+position:fixed;
+top:0;
+animation:fall 5s linear infinite;
+}
+
+@keyframes fall {
+to { transform: translateY(100vh); }
+}
+
+h1 { font-size:55px; margin-top:80px; }
+p { font-size:24px; }
+
+/* CENTER CONTENT */
+.container {
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+height:100vh;
+}
+
+</style>
+</head>
+
+<body style="background:linear-gradient(to bottom, #ffd6e0, #ff8fab);">
+
+<div class="container">
+<h1>Hi Bear 🐻💖</h1>
+
+<button onclick="wrong()">Hello Edna</button>
+<button onclick="chessPage()">Hello Grandmaster Edna 👑</button>
+</div>
+
+<script>
+
+function wrong(){
+alert("Wrong greeting 😤");
+}
+
+function createFalling(symbol, size=30, speed=5){
+setInterval(()=>{
+let el=document.createElement("div");
+el.innerHTML=symbol;
+el.className="fall";
+el.style.left=Math.random()*100+"vw";
+el.style.fontSize=size+"px";
+el.style.animationDuration=speed+"s";
+document.body.appendChild(el);
+},300);
+}
+
+/* CHESS PAGE */
+function chessPage(){
+document.body.style.background="linear-gradient(to bottom, #a0c4ff, #3a86ff)";
+document.body.innerHTML=`
+<div class="container">
+<h1>♟️ Grandmaster Mode ♟️</h1>
+<p>How many times have you been checkmated by me?</p>
+<button onclick="wrongChoice()">2</button>
+<button onclick="wrongChoice()">5</button>
+<button onclick="lovePage()">7 👑</button>
+</div>
+`;
+createFalling("♟️", 30, 6);
+}
+
+function wrongChoice(){
+alert("Incorrectly chosen ❌");
+}
+
+/* LOVE QUESTIONS PAGE */
+function lovePage(){
+document.body.style.background="linear-gradient(to bottom, #ffccd5, #ff8fab)";
+document.body.innerHTML=`
+<div class="container">
+<h1>💖 Quick Questions 💖</h1>
+<p>Who loves you the most?</p>
+<button onclick="nextQ()">You ❤️</button>
+<button onclick="wrongChoice()">Someone else</button>
+</div>
+`;
+createFalling("❤️", 25, 5);
+}
+
+function nextQ(){
+document.body.innerHTML=`
+<div class="container">
+<h1>💞 One More 💞</h1>
+<p>Who are you stuck with forever?</p>
+<button onclick="marryPage()">You 😘</button>
+<button onclick="wrongChoice()">Escape</button>
+</div>
+`;
+}
+
+/* MARRY PAGE */
+function marryPage(){
+document.body.style.background="linear-gradient(to bottom, #fff3b0, #ffd60a)";
+document.body.innerHTML=`
+<div class="container">
+<h1>💛 Will you marry me? 💛</h1>
+<button onclick="teddy()">YES 💖</button>
+<button onclick="teddy()">YES 💖</button>
+</div>
+`;
+createFalling("❤️", 30, 4);
+}
+
+/* TEDDY PAGE */
+function teddy(){
+document.body.innerHTML=`
+<div class="container">
+<h1>🎉 CONGRATULATIONS 🎉</h1>
+<p>You made the right choice 😌</p>
+<button onclick="giftPage()">Open Your Gift 🎁</button>
+</div>
+`;
+
+setInterval(()=>{
+let el=document.createElement("div");
+el.innerHTML="🧸";
+el.className="fall";
+el.style.fontSize="60px";
+el.style.left=Math.random()*100+"vw";
+el.style.animationDuration="7s";
+document.body.appendChild(el);
+},400);
+}
+
+/* GIFT PAGE */
+function giftPage(){
+document.body.style.background="linear-gradient(to bottom, #ffffff, #ffe5ec)";
+document.body.innerHTML=`
+<div class="container">
+<h1>🎁 A Gift For You 🎁</h1>
+<button onclick="openGift()">Click to Open 💝</button>
+</div>
+`;
+}
+
+/* FINAL */
+function openGift(){
+document.body.innerHTML=`
+<div class="container">
+<h1 style="font-size:60px;">💖 Now you are mine 💖</h1>
+<p>Forever and always 💞</p>
+</div>
+`;
+createFalling("❤️", 35, 5);
+}
+
+</script>
+</body>
+</html>
